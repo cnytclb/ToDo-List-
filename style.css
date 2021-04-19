@@ -1,0 +1,372 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    /* background-color: linear-gradient(40deg, #1e9480 0%, #e4ccd5 100%); */
+    /* color: white; */
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+  }
+
+  .page{
+    height: 100vh;
+  }
+
+  .main, .select {    /* von hier  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .select {
+    min-width: 50px;
+  }
+  .main {
+    min-width: 200px;
+  }
+
+  @media (max-width:500px) {
+    html {
+      font-size: 70%;
+    }
+    .todo-list {
+      width: 80%;
+    }
+  }
+  .todo-input{
+    width: 40%;
+  }
+
+  @media (min-width:501px) and (max-width:767px){
+    html {
+      font-size: 80%;
+    }
+    input{
+      width: 50%;
+      margin-left: 5px;
+    }
+    .select{
+      width: 30%;
+      margin-right: 5px;
+    }
+    select{
+      margin-left: 0;
+    }
+    .todo-list{
+      width: 70%;
+    }
+  }
+  @media(min-width:768px) and (max-width:1000px){
+    .todo-list{
+      width: 60%;
+    }
+  }
+  @media(min-width:1001px)and (max-width:1280px){
+    .todo-list{
+      width: 50%;
+    }
+  }
+  header {
+    font-size: 2rem;
+  }
+  
+  header,
+  form {
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  form input,
+  form button {
+    padding: 0.5rem;
+    font-size: 2rem;
+    border: 1px grey solid;
+    /* background: rgb(224, 219, 219) ; */
+  }
+  form button {
+    color: #ec250b;
+    background: #f7fffe;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  form button:hover {
+    background: #ec250b;
+    color: white;
+  }
+  .todo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .todo-list {
+    min-width: 35%;
+    list-style: none;
+  }
+  
+  .todo {
+    margin: 0.5rem;
+    background: white;
+    border: 1px grey solid;
+    font-size: 1.5rem;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  .filter-todo {
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: white;
+    border: 1px grey solid;
+    
+  }
+  .todo li {
+    flex: 1;
+  }
+  
+  .trash-btn,
+  .complete-btn,
+  .edit-btn {
+   
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  .complete-btn {
+    background: rgb(80, 228, 11);
+  }
+  .trash-btn{
+    background: #ec250b;
+  }
+  .edit-btn{
+    background-color:rgb(48, 48, 231);
+  }
+  .todo-item {
+    padding: 0rem 0.5rem;
+  }
+  
+  .fa-trash,
+  .fa-check,
+  .fa-edit {
+    pointer-events: none;
+  }
+  
+  .fall {
+    transform: translateY(10rem) rotateZ(20deg);
+    opacity: 0;
+  }
+  
+  .completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+  
+  /*CUSTOM SELECTOR */
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    /* border: 0 !important; */
+    background-image: none;
+    background-color:white;
+    border: 1px grey solid;
+  }
+  
+ /* Custom Select */ 
+.select {
+  margin-left: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+  select {
+    color: #ec250b;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    width: 12rem;
+  }
+  /* Arrow */
+  .select::after {
+    content: "\25BC";
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1.1rem;
+    background: #ec250b;
+    cursor: pointer;
+    pointer-events: none;
+  }
+  /* Transition */
+  
+  .select:hover::after {
+    transform: scale(1.1);
+  }
+
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+.container-btn-mode{
+  position: absolute;
+  top:20px;
+  right: 30px;
+  cursor: pointer;
+  z-index: 2;
+  font-size:0;
+}
+.btn-mode{
+  display: inline-block;
+  width: 50px;
+  height: 30px;
+  border:2px solid black;
+  transition: background-color .5s;
+}
+.btn-mode i {
+  display: block;
+  font-size: 17px;
+  text-align: center;
+  line-height: 30px;
+}
+.btn-mode.sun{
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-right: 1px solid transparent;
+}
+.btn-mode.moon{
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.active{
+  background-color:black;
+  color:#ffcd5c !important;
+}
+
+/* darkModus */
+.container-btn-mode{
+  position: absolute;
+  top:20px;
+  right: 30px;
+  cursor: pointer;
+  z-index: 2;
+  font-size:0;
+  margin: 2px;
+}
+header>h1{
+  margin-top: 35px;
+}
+
+.btn-mode{
+  display: inline-block;
+  width: 50px;
+  height: 30px;
+  border:2px solid black;
+  transition: background-color .5s;
+}
+
+.btn-mode i {
+  display: block;
+  font-size: 17px;
+  text-align: center;
+  line-height: 30px;
+}
+
+.btn-mode.sun{
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-right: 1px solid transparent;
+}
+
+.btn-mode.moon{
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.active{
+  background-color:black;
+  color:#ffcd5c !important;
+}
+
+.dark-mode{
+  background-color: black;
+  transition:background-color .5s;
+}
+
+.dark-mode h1, .dark-mode h2, .dark-mode .btn-contact{
+  color:white;
+}
+
+.dark-mode .btn-mode{
+  /* background-color:lime; */
+  border:1px solid white;
+  color:white;
+}
+
+.dark-mode .todo{
+  background-color: white;
+  border: 1px honeydew solid;
+}
+/* 
+.dark-mode .todo-item{
+  background-color: black;
+  color: white;
+} */
